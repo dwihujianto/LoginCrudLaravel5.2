@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Laravel</title>
 
@@ -39,15 +40,15 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                <a class="navbar-brand" href="{{ url('/beranda') }}">
+                    belajar Laravel
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/dosen') }}">Data Dosen</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -63,7 +64,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Keluar</a></li>
                             </ul>
                         </li>
                     @endif
@@ -78,5 +79,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script type="text/javascript">
+       $(document).ready(function(){
+
+            $("#matkul").change(function(){
+
+                var matkulValue = $("#matkul").val();
+
+                if (matkulValue == '') 
+                {
+                    window.location = '/dosen';
+                }
+                else
+                {
+                    window.location = '/dosen?category='+matkulValue;
+                }    
+                                   
+            });
+
+        });
+    </script>
 </body>
 </html>
